@@ -13,3 +13,12 @@ ul#index {
   flex-grow: 0;
   align-items: center;
 }
+
+.form-signin {
+  max-width: 330px;
+  padding: 1rem;
+}
+
+.form-floating {
+  padding: 0 0 1rem 0;
+}
