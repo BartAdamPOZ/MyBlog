@@ -17,19 +17,19 @@ class Article
      * The article title
      * @var string
      */
-    public $title;
+    public $title = "";
 
     /**
      * The article content
      * @var string
      */
-    public $content;
+    public $content = "";
 
     /**
      * The publication date and time
      * @var datetime
      */
-    public $published_at;
+    public $published_at = "";
 
     /**
      * Path to the image
