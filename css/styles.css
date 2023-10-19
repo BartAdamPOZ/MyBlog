@@ -22,3 +22,22 @@ ul#index {
 .form-floating {
   padding: 0 0 1rem 0;
 }
+
+.new-article-form {
+  display: flex;
+  flex-direction: column;
+  max-width: 65%;
+}
+
+.form-group {
+  margin-bottom: 10px;
+}
+
+@media screen and (max-width: 992px) {
+
+
+.new-article-form {
+  max-width: 80%;
+}
+
+}
