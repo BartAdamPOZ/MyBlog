@@ -6,8 +6,6 @@
 </ul>
 <?php endif; ?>
 
-<div class="container new-article-form">
-<h2 class="d-flex justify-content-center">New article</h2>
 
   <form method="post" id="formArticle">
 
@@ -26,7 +24,7 @@
     <div class="form-group">
       <label for="published_at">Publication date and time</label>
       <input class="form-control" name="published_at" id="published_at"
-        value="<?= htmlspecialchars($article -> published_at); ?>">
+        value="<?= $article -> published_at; ?>">
     </div>
 
     <fieldset>

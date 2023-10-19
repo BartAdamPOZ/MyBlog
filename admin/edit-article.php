@@ -41,7 +41,8 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
 <?php require '../includes/header.php';?>
 
-<h2>Edit article</h2>
+<div class="container new-article-form">
+<h2 class="d-flex justify-content-center">Edit article</h2>
 
 <?php require 'includes/article-form.php';?>
 
