@@ -61,23 +61,11 @@ class Article
         return $results->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    /**
-     * Get a page of articles
-     *
-     * @param object $conn Connection to the database
-     * @param integer $limit Number of records to return
-     * @param integer $offset Number of records to skip
-     *
-     * @return array An associative array of the page of article records
-     */
-    public static function getPage($conn, $only_published = false)
-    {
-        $condition = $only_published ? ' WHERE published_at IS NOT NULL' : '';
+    public static function getAllArticlesWithoutPagination($conn) {
 
         $sql = "SELECT a.*, category.name AS category_name
                 FROM (SELECT *
                 FROM article
-                $condition
                 ORDER BY published_at) 
                 AS a
                 LEFT JOIN article_category
@@ -87,7 +75,61 @@ class Article
 
         $stmt = $conn->prepare($sql);
 
-        
+        $stmt->execute();
+
+        $results =  $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        $articles = [];
+
+        $previous_id = null;
+
+        foreach ($results as $row) {
+
+          $article_id = $row['id'];
+
+          if($article_id != $previous_id) {
+            $row['category_names'] = [];
+
+            $articles[$article_id] = $row;
+          }
+
+          $articles[$article_id]['category_names'][] = $row['category_name'];
+
+          $previous_id = $article_id;
+
+        }
+      return $articles;
+    }
+
+    /**
+     * Get a page of articles
+     *
+     * @param object $conn Connection to the database
+     * @param integer $limit Number of records to return
+     * @param integer $offset Number of records to skip
+     *
+     * @return array An associative array of the page of article records
+     */
+    public static function getPage($conn, $limit, $offset, $only_published = false)
+    {
+        $condition = $only_published ? ' WHERE published_at IS NOT NULL' : '';
+
+        $sql = "SELECT a.*, category.name AS category_name
+                FROM (SELECT *
+                FROM article
+                $condition
+                ORDER BY published_at
+                LIMIT :limit
+                OFFSET :offset) AS a
+                LEFT JOIN article_category
+                ON a.id = article_category.article_id
+                LEFT JOIN category
+                ON article_category.category_id = category.id";
+
+        $stmt = $conn->prepare($sql);
+
+        $stmt->bindValue(':limit', $limit, PDO::PARAM_INT);
+        $stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
 
         $stmt->execute();
 

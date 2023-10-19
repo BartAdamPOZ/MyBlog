@@ -6,9 +6,7 @@ Auth::requireLogin();
 
 $conn = require '../includes/db.php';
 
-$paginator = new Paginator($_GET['page'] ?? 1 , 6, Article::getTotal($conn));
-
-$articles = Article::getPage($conn);
+$articles = Article::getAllArticlesWithoutPagination($conn);
 
 ?>
 
@@ -68,6 +66,7 @@ $articles = Article::getPage($conn);
       <?php endforeach;?>
     </tbody>
   </table>
+
   <?php endif;?>
 </div>
 <?php require '../includes/footer.php';?>
