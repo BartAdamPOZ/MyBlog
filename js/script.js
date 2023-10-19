@@ -1,3 +1,7 @@
+$(document).ready(function() {
+  $('#articles-table').DataTable();
+});
+
 $("a.delete").on("click", function(e) {
 
   e.preventDefault();

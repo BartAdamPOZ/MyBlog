@@ -14,6 +14,9 @@
   <!-- jQuery Date and Time Picker library -->
   <link rel="stylesheet" href="/css/jquery.datetimepicker.min.css">
 
+  <!-- DataTable library -->
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.css" />
+
   <link rel="stylesheet" href="/css/styles.css">
 
   <title>My blog</title>
