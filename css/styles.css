@@ -33,6 +33,15 @@ ul#index {
   margin-bottom: 10px;
 }
 
+#a-new-article {
+  text-decoration: none;
+  color:white;
+}
+
+#btn-add-new-article {
+  margin: 1rem 0 2rem 0;
+}
+
 @media screen and (max-width: 992px) {
 
 

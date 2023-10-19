@@ -13,10 +13,14 @@ $articles = Article::getPage($conn, $paginator -> limit, $paginator -> offset);
 ?>
 
 <?php require '../includes/header.php';?>
+
+<div class="container table-responsive">
+
+
   
 <h2>Administration</h2>
 
-<p><a href="new-article.php">New article</a></p>
+<button id="btn-add-new-article" class="btn btn-lg btn-dark" ><a id="a-new-article" href="new-article.php">New article</a></button>
 
     <?php if (empty($articles)): ?>
 
@@ -49,4 +53,5 @@ $articles = Article::getPage($conn, $paginator -> limit, $paginator -> offset);
       </table>
       <?php require '../includes/pagination.php';?>
     <?php endif;?>
+    </div>
 <?php require '../includes/footer.php';?>
