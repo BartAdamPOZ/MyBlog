@@ -39,7 +39,7 @@ $articles = Article::getPage($conn, $paginator -> limit, $paginator -> offset, t
 
                 <?php foreach ($article['category_names'] as $name) : ?>
 
-                  <?= htmlspecialchars($name); ?>
+                  <?= $name; ?>
 
                 <?php endforeach; ?>
 

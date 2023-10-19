@@ -70,7 +70,7 @@ class Article
      *
      * @return array An associative array of the page of article records
      */
-    public static function getPage($conn, $limit, $offset, $only_published = false)
+    public static function getPage($conn, $only_published = false)
     {
         $condition = $only_published ? ' WHERE published_at IS NOT NULL' : '';
 
@@ -78,9 +78,8 @@ class Article
                 FROM (SELECT *
                 FROM article
                 $condition
-                ORDER BY published_at
-                LIMIT :limit
-                OFFSET :offset) AS a
+                ORDER BY published_at) 
+                AS a
                 LEFT JOIN article_category
                 ON a.id = article_category.article_id
                 LEFT JOIN category
@@ -88,8 +87,7 @@ class Article
 
         $stmt = $conn->prepare($sql);
 
-        $stmt->bindValue(':limit', $limit, PDO::PARAM_INT);
-        $stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
+        
 
         $stmt->execute();
 
@@ -305,14 +303,7 @@ class Article
 
                 $this->errors[] = 'Invalid date and time';
 
-            } else {
-
-                $date_errors = date_get_last_errors();
-
-                if ($date_errors['warning_count'] > 0) {
-                    $this->errors[] = 'Invalid date and time';
-                }
-            }
+            } 
         }
 
         return empty($this->errors);
