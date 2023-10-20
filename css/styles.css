@@ -16,7 +16,7 @@ ul.pagination {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  max-width: 30ch;
+  max-width: 25ch;
 }
 
 body {
