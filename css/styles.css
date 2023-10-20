@@ -2,6 +2,15 @@
   height: 10em;
 }
 
+#title-admin-table {
+  color: black;
+  text-decoration: solid;
+}
+
+ul.pagination {
+  margin-top: 15px;
+}
+
 .text-short {
   display: inline-block;
   white-space: nowrap;
@@ -39,6 +48,11 @@ body {
 .main {
   background: #e73c7e;
   opacity: 100%;
+}
+
+#table-admin {
+  background: rgba(255, 255, 255, 0.397);
+  padding: 1rem 1rem 1rem 1rem;
 }
 
 .navbar-collapse {

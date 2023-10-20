@@ -12,9 +12,7 @@ $articles = Article::getAllArticlesWithoutPagination($conn);
 
 <?php require '../includes/header.php';?>
 
-<div class="container table-responsive">
-
-
+<div id="table-admin" class="container">
 
   <h2>Administration</h2>
 
@@ -27,7 +25,7 @@ $articles = Article::getAllArticlesWithoutPagination($conn);
 
   <?php else:?>
 
-  <table id="articles-table" class="display">
+  <table id="articles-table" class="display hover row-border" >
     <thead>
       <th>Title</th>
       <th>Categories</th>
@@ -39,7 +37,7 @@ $articles = Article::getAllArticlesWithoutPagination($conn);
         
       <tr>
         <td>
-          <a href="article.php?id=<?= $article['id']; ?>"><?= htmlspecialchars($article['title']);?></a>
+          <a id="title-admin-table" href="article.php?id=<?= $article['id']; ?>"><?= htmlspecialchars($article['title']);?></a>
         </td>
         <td>
           <?php if ($article['category_names']) : ?>
