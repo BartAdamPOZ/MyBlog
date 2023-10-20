@@ -23,7 +23,7 @@ $articles = Article::getPage($conn, $paginator -> limit, $paginator -> offset, t
 <?php foreach ($articles as $article):?>
 
 
-  <div class="article-card col-md-4">
+  <div class="article-card col-lg-4 col-md-6">
   
     <div class="row border rounded overflow-hidden shadow-lg ">
     <a href="article.php?id=<?= $article['id']; ?>" class="link-body-emphasis text-decoration-none">

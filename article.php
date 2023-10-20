@@ -14,6 +14,8 @@ if (isset($_GET['id'])) {
 ?>
 <?php require 'includes/header.php';?>
 
+<div class="container individual-article">
+
 <?php if ($article): ?>
 
   <article>
@@ -46,5 +48,7 @@ if (isset($_GET['id'])) {
   <p>Article not found.</p>
 
 <?php endif; ?>
+
+</div>
 
 <?php require 'includes/footer.php';?>

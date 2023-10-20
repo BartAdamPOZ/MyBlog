@@ -16,43 +16,62 @@ if (isset($_GET['id'])) {
 ?>
 <?php require '../includes/header.php';?>
 
-<?php if ($article): ?>
+<div class="container individual-article">
+  
+  <div class="col">
 
-  <article>
-    <h2><?= htmlspecialchars($article[0]['title']); ?></h2>
+    <?php if ($article): ?>
 
-    <?php if($article[0]['published_at']) : ?>
-      <time><?= $article[0]['published_at']?></time>
-    <?php else : ?>
+    <article>
+      <h2>Title: <?= htmlspecialchars($article[0]['title']); ?></h2>
+
+      <?php if($article[0]['published_at']) : ?>
+      <h5>Publication date: <time><?= $article[0]['published_at']?></time></h5>
+      <?php else : ?>
       Unpublished
-    <?php endif; ?>
+      <?php endif; ?>
 
-    <?php if($article[0]['category_name']): ?>
+      <?php if($article[0]['category_name']): ?>
 
-      <p>Categories:
+      <h6>Categories: <br>
         <?php foreach($article as $a) : ?>
-          <?= htmlspecialchars($a['category_name']); ?>
+        <?= htmlspecialchars($a['category_name']); ?>
         <?php endforeach; ?>
-        </p>
-        
-    <?php endif ;?>
+      </h6>
 
-    <?php if ($article[0]['image_file']) : ?>
+      <?php endif ;?>
+      <h6>Content: <br>
+        <p><?= htmlspecialchars($article[0]['content']); ?></p>
+      </h6>
+
+      </div>
+      <div class="col">
+
+      
+      <?php if ($article[0]['image_file']) : ?>
       <img src="/uploads/<?= $article[0]['image_file'];?>">
-    <?php endif; ?>
+      <?php endif; ?>
+      </div>
+      
+      
+    </article>
+  
+  <div class="col">
+    <button class="btn btn-md btn-warning"><a href="edit-article.php?id=<?= $article[0]['id'];?>">Edit</a></button>
+    <button class="btn btn-md btn-danger"><a class="delete"
+        href="delete-article.php?id=<?= $article[0]['id'];?>">Delete</a></button>
+    <button class="btn btn-md btn-warning"><a href="edit-article-image.php?id=<?= $article[0]['id']; ?>">Edit
+        image</a></button>
+  </div>
+ 
 
-    <p><?= htmlspecialchars($article[0]['content']); ?></p>
-  </article>
 
-  <a href="edit-article.php?id=<?= $article[0]['id'];?>">Edit</a>
-  <a class="delete" href="delete-article.php?id=<?= $article[0]['id'];?>">Delete</a> <br>
-  <a href="edit-article-image.php?id=<?= $article[0]['id']; ?>">Edit image</a>
-
-
-<?php else: ?>
+  <?php else: ?>
 
   <p>Article not found.</p>
 
-<?php endif; ?>
+  <?php endif; ?>
+
+</div>
 
 <?php require '../includes/footer.php';?>

@@ -55,6 +55,30 @@ body {
   padding: 1rem 1rem 1rem 1rem;
 }
 
+.individual-article{
+  background: rgba(255, 255, 255, 0.397);
+  padding: 1rem 1rem 1rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.individual-article button {
+  margin: 5px 5px 5px 5px;
+}
+
+.individual-article img {
+  max-width: 200px;
+  max-height: 200px;
+
+}
+
+.individual-article a {
+  text-decoration: none;
+  color: black;
+}
+
 .navbar-collapse {
   flex-basis: 100%;
   flex-grow: 0;
