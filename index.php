@@ -4,7 +4,7 @@ require 'includes/init.php';
 
 $conn = require 'includes/db.php';
 
-$paginator = new Paginator($_GET['page'] ?? 1 , 4, Article::getTotal($conn, true));
+$paginator = new Paginator($_GET['page'] ?? 1 , 6, Article::getTotal($conn, true));
 
 $articles = Article::getPage($conn, $paginator -> limit, $paginator -> offset, true);
 
@@ -14,50 +14,64 @@ $articles = Article::getPage($conn, $paginator -> limit, $paginator -> offset, t
 
 <?php if (empty($articles)): ?>
 
-      <p>No articles found</p>
+<p>No articles found</p>
 
-    <?php else:?>
+<?php else:?>
 
-      <ul id="index">
+<div class="main-site-articles">
 
-        <?php foreach ($articles as $article):?>
+<?php foreach ($articles as $article):?>
 
-          <li>
 
-          <article>
+  <div class="article-card col-md-4">
+  
+    <div class="row border rounded overflow-hidden shadow-lg ">
+    <a href="article.php?id=<?= $article['id']; ?>" class="link-body-emphasis text-decoration-none">
+    
+      <div class="btn d-flex flex-column">
 
-            <h2><a href="article.php?id=<?= $article['id']; ?>"><?= htmlspecialchars($article['title']); ?></a></h2>
+    <article>
 
-            <time><?php
-              $datetime = new DateTime($article['published_at']); 
-              echo $datetime -> format("j F, Y");
-            ?></time>
+      <h4 class="text-short"><?= htmlspecialchars($article['title']); ?></h4><br>
 
-            <?php if ($article['category_names']) : ?>
+      <time><?php $datetime = new DateTime($article['published_at']); 
+            echo $datetime -> format("j F, Y"); ?></time>
 
-              <p>Categories:
+      <?php if ($article['category_names']) : ?>
 
-                <?php foreach ($article['category_names'] as $name) : ?>
+      <p>Categories:
 
-                  <?= $name; ?>
+        <?php foreach ($article['category_names'] as $name) : ?>
 
-                <?php endforeach; ?>
+        <?= $name; ?>
 
-              </p>
+        <?php endforeach; ?>
 
-            <?php endif; ?>
+      </p>
 
-            <p><?= htmlspecialchars($article['content']); ?></p>
+      <?php endif; ?>
 
-          </article>
+      <p class="text-short"><?= htmlspecialchars($article['content']); ?></p>
+      
 
-          </li>
+    </article>
+    <p>(Click to read more)</p>
+    </div>
+    
+    </a>
+    </div>
+    
+    
+  </div>
 
-        <?php endforeach;?>
 
-      </ul>
 
-    <?php require 'includes/pagination.php';?>
+
+<?php endforeach;?>
+
+</div>
+
+<?php require 'includes/pagination.php';?>
 
 <?php endif;?>
 <?php require 'includes/footer.php';?>

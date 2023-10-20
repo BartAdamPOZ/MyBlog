@@ -25,7 +25,7 @@
 <body>
 
   <div class="container">
-    <nav class="navbar navbar-expand-lg bg-body-tertiary my-3">
+    <nav class="navbar navbar-expand-lg my-3">
       <div class="container d-flex py-2">
         <h1 class="mx-3">MyBlog</h1>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02"
@@ -55,4 +55,4 @@
       </div>
     </nav>
 
-    <main>
+    <main class="container">

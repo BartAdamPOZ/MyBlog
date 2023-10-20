@@ -34,7 +34,9 @@ $articles = Article::getAllArticlesWithoutPagination($conn);
       <th>Published</th>
     </thead>
     <tbody>
+
       <?php foreach ($articles as $article):?>
+        
       <tr>
         <td>
           <a href="article.php?id=<?= $article['id']; ?>"><?= htmlspecialchars($article['title']);?></a>
@@ -42,15 +44,11 @@ $articles = Article::getAllArticlesWithoutPagination($conn);
         <td>
           <?php if ($article['category_names']) : ?>
 
-          
+          <?php foreach ($article['category_names'] as $name) : ?>
 
-            <?php foreach ($article['category_names'] as $name) : ?>
+          <?= $name; ?>
 
-            <?= $name; ?>
-
-            <?php endforeach; ?>
-
-          
+          <?php endforeach; ?>
 
           <?php endif; ?>
         </td>
