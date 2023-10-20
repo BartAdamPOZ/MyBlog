@@ -78,6 +78,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 
 ?>
+
+<div class="container contact-page" style="min-width:320px;">
+  <div class="contact-form" style="min-width:300px;">
 <h2>Contact</h2>
 
 <?php if ($sent) : ?>
@@ -114,8 +117,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       placeholder="Message"><?= htmlspecialchars($message) ?></textarea>
   </div>
 
-  <button class="btn">Send</button>
+  <button class="btn btn-dark">Send</button>
 
 </form>
+</div>
+</div>
 
 <?php require 'includes/footer.php'; ?>
